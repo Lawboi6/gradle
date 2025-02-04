@@ -36,6 +36,7 @@ import org.gradle.api.internal.file.FileResolver
 import org.gradle.api.internal.file.collections.DirectoryFileTreeFactory
 import org.gradle.api.internal.provider.PropertyFactory
 import org.gradle.api.internal.provider.ValueSourceProviderFactory
+import org.gradle.api.model.ObjectFactory
 import org.gradle.api.problems.internal.InternalProblems
 import org.gradle.api.tasks.util.PatternSet
 import org.gradle.composite.internal.BuildTreeWorkGraphController
@@ -150,6 +151,7 @@ class Codecs(
     propertyFactory: PropertyFactory,
     filePropertyFactory: FilePropertyFactory,
     fileResolver: FileResolver,
+    objectFactory: ObjectFactory,
     instantiator: Instantiator,
     fileSystemOperations: FileSystemOperations,
     val taskNodeFactory: TaskNodeFactory,
@@ -231,7 +233,7 @@ class Codecs(
             bind(CapabilitySerializer())
 
             bind(DefaultCopySpecCodec(patternSetFactory, fileCollectionFactory, propertyFactory, instantiator, fileSystemOperations))
-            bind(DestinationRootCopySpecCodec(fileResolver))
+            bind(DestinationRootCopySpecCodec(fileResolver, objectFactory))
 
             bind(TaskReferenceCodec)
 
