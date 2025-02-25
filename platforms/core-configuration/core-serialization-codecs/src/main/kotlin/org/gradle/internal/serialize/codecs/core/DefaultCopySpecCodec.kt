@@ -23,6 +23,7 @@ import org.gradle.api.file.FileCollection
 import org.gradle.api.file.FileCopyDetails
 import org.gradle.api.file.FileSystemOperations
 import org.gradle.api.internal.file.FileCollectionFactory
+import org.gradle.api.internal.file.FilePropertyFactory
 import org.gradle.api.internal.file.copy.CopySpecInternal
 import org.gradle.api.internal.file.copy.DefaultCopySpec
 import org.gradle.api.internal.provider.PropertyFactory
@@ -45,6 +46,7 @@ class DefaultCopySpecCodec(
     private val patternSetFactory: Factory<PatternSet>,
     private val fileCollectionFactory: FileCollectionFactory,
     private val propertyFactory: PropertyFactory,
+    private val filePropertyFactory: FilePropertyFactory,
     private val instantiator: Instantiator,
     private val fileSystemOperations: FileSystemOperations
 ) : Codec<DefaultCopySpec> {
@@ -78,7 +80,17 @@ class DefaultCopySpecCodec(
             val fileMode = readNullableSmallInt()
             val actions = readList().uncheckedCast<List<Action<FileCopyDetails>>>()
             val children = readList().uncheckedCast<List<CopySpecInternal>>()
-            val copySpec = DefaultCopySpec(fileCollectionFactory, propertyFactory, instantiator, patternSetFactory, sourceFiles, patterns, actions, children)
+            val copySpec = DefaultCopySpec(
+                fileCollectionFactory,
+                propertyFactory,
+                filePropertyFactory,
+                instantiator,
+                patternSetFactory,
+                sourceFiles,
+                patterns,
+                actions,
+                children
+            )
             destPath?.let { copySpec.into(destPath) }
             copySpec.duplicatesStrategy = duplicatesStrategy
             copySpec.includeEmptyDirs = includeEmptyDirs
