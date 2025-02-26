@@ -37,5 +37,5 @@ public interface InternalProblems extends Problems {
 
     IsolatableFactory getIsolatableFactory();
 
-    NewIsolatableSerializer getIsolatableSerializer();
+    IsolatableToBytesSerializer getIsolatableSerializer();
 }
