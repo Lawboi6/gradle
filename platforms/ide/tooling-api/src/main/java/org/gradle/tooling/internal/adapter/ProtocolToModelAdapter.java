@@ -535,8 +535,10 @@ public class ProtocolToModelAdapter implements ObjectGraphAdapter {
         public Object invoke(Object target, Method method, Object[] params) throws Throwable {
             if (EQUALS_METHOD.equals(method)) {
                 Object param = params[0];
-                if (param == null || !Proxy.isProxyClass(param.getClass())) {
+                if (param == null) {
                     return false;
+                } else if (!Proxy.isProxyClass(param.getClass())) {
+                    return param.equals(target);
                 }
                 InvocationHandler other = Proxy.getInvocationHandler(param);
                 return equals(other);
