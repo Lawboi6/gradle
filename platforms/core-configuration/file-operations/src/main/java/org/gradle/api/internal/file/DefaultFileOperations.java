@@ -75,6 +75,7 @@ import static org.gradle.api.internal.lambdas.SerializableLambdas.transformer;
 public class DefaultFileOperations implements FileOperations {
     private final FileResolver fileResolver;
     private final PropertyFactory propertyFactory;
+    private final FilePropertyFactory filePropertyFactory;
     private final Instantiator instantiator;
     private final Deleter deleter;
     private final ResourceHandler resourceHandler;
@@ -110,6 +111,7 @@ public class DefaultFileOperations implements FileOperations {
         this.fileCollectionFactory = fileCollectionFactory;
         this.fileResolver = fileResolver;
         this.propertyFactory = propertyFactory;
+        this.filePropertyFactory = filePropertyFactory;
         this.instantiator = instantiator;
         this.directoryFileTreeFactory = directoryFileTreeFactory;
         this.resourceHandler = resourceHandlerFactory.create(this);
@@ -300,7 +302,7 @@ public class DefaultFileOperations implements FileOperations {
 
     @Override
     public CopySpec copySpec() {
-        return instantiator.newInstance(DefaultCopySpec.class, fileCollectionFactory, propertyFactory, instantiator, patternSetFactory);
+        return instantiator.newInstance(DefaultCopySpec.class, fileCollectionFactory, propertyFactory, filePropertyFactory, instantiator, patternSetFactory);
     }
 
     @Override
