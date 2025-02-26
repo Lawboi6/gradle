@@ -42,7 +42,7 @@ class SimpleAnalysisEvaluator(
     val schemaBuilder: (DeclarativeScriptContext) -> InterpretationSchemaBuildingResult
 ) {
     companion object {
-        @JvmStatic // TODO: necessary?
+        @JvmStatic
         fun withSchema(settings: InterpretationSequence, project: InterpretationSequence): SimpleAnalysisEvaluator =
             SimpleAnalysisEvaluator {
                 when (it) {
