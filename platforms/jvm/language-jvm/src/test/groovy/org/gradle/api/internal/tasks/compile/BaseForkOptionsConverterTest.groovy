@@ -16,9 +16,7 @@
 
 package org.gradle.api.internal.tasks.compile
 
-
 import org.gradle.api.internal.file.TestFiles
-import org.gradle.api.tasks.compile.BaseForkOptions
 import spock.lang.Specification
 
 class BaseForkOptionsConverterTest extends Specification {

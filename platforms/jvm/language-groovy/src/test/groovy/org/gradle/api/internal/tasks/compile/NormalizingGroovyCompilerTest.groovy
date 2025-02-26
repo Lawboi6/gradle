@@ -18,7 +18,6 @@ package org.gradle.api.internal.tasks.compile
 import org.gradle.api.model.ObjectFactory
 import org.gradle.api.tasks.compile.CompileOptions
 import org.gradle.api.tasks.compile.GroovyCompileOptions
-import org.gradle.api.tasks.compile.MinimalGroovyCompileOptionsConverter
 import org.gradle.internal.service.DefaultServiceRegistry
 import org.gradle.internal.service.ServiceLookup
 import org.gradle.util.TestUtil

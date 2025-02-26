@@ -19,6 +19,7 @@ dependencies {
     api(libs.jsr305)
 
     implementation(projects.baseAsm)
+    implementation(projects.baseServicesGroovy)
     implementation(projects.classloaders)
     implementation(projects.concurrent)
     implementation(projects.stdlibJavaExtensions)

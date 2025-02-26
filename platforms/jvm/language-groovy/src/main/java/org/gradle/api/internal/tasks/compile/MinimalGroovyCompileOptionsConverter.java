@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.gradle.api.tasks.compile;
+package org.gradle.api.internal.tasks.compile;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import org.gradle.api.internal.tasks.compile.MinimalGroovyCompileOptions;
-import org.gradle.api.internal.tasks.compile.MinimalGroovyCompilerDaemonForkOptions;
+import org.gradle.api.tasks.compile.GroovyCompileOptions;
+import org.gradle.api.tasks.compile.GroovyForkOptions;
 
 import java.util.HashMap;
 
